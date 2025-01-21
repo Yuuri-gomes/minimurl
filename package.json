@@ -19,7 +19,7 @@
     "lint:prettier:check": "prettier -c .",
     "lint:prettier:fix": "prettier -w .",
     "test": "jest",
-    "test:watch": "jest --watch --runInBand"
+    "test:watch": "jest --watchAll --runInBand"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
