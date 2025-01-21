@@ -9,7 +9,7 @@ export default function UnderConstruction() {
           Em Construção 🚧
         </h1>
         <p className="mt-4 text-lg text-gray-600">
-          Estamos trabalhando duro para trazer algo incrível. Volte em breve!
+          Estamos trabalhando duro para trazer algo incrível. Volte em breve !
         </p>
       </div>
     </div>
