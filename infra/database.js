@@ -5,6 +5,7 @@ const configDB = {
   user: process.env.MYSQL_ROOT_USER,
   password: process.env.MYSQL_ROOT_PASSWORD,
   host: process.env.MYSQL_HOST,
+  port: process.env.MYSQL_PORT
 };
 
 async function doQuery(query, config) {
@@ -31,8 +32,9 @@ async function getNewClient() {
     configDB.password,
     {
       host: configDB.host,
-      port: "3307",
+      port: configDB.port,
       dialect: "mysql",
+      dialectModule: require('mysql2')
     },
   );
 
