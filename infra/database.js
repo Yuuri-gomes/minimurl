@@ -13,6 +13,7 @@ const sequelize = new Sequelize(
   configDB.password,
   {
     host: configDB.host,
+    port: '3307',
     dialect: "mysql",
   },
 );
