@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql/mysql-server
+    container_name: "docker-db"
+    restart: always
+    env_file:
+      - ../.env
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-volume:/var/lib/mysql
+volumes:
+  mysql-volume:
+    driver: local
