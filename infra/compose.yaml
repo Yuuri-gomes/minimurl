@@ -1,14 +1,12 @@
 services:
-  db:
-    image: mysql/mysql-server:latest
-    container_name: "minimurl_db_local"
+  mysql:
+    image: mysql/mysql-server
+    container_name: "docker-db"
     restart: always
     env_file:
       - ../.env
     ports:
-      - "3306:3306"
-    expose:
-      - "3306"
+      - "3307:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
 volumes:
