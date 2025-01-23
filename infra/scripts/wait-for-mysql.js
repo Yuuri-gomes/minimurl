@@ -1,5 +1,5 @@
 const { exec } = require("child_process");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 const maxRetries = 10;
@@ -7,7 +7,7 @@ const retryInterval = 5000;
 const mysqlContainerName = process.env.DOCKER_CONTAINER_NAME;
 const rootPassword = process.env.MYSQL_ROOT_PASSWORD;
 
-console.log('Senha do .env: ', rootPassword)
+console.log("Senha do .env: ", rootPassword);
 
 function executeCommand(command) {
   return new Promise((resolve, reject) => {
@@ -34,11 +34,15 @@ async function checkMySQLReady(retries = 0) {
   }
 
   if (retries >= maxRetries - 1) {
-    console.error("❌ Erro: MySQL não ficou pronto dentro do limite de tentativas.");
+    console.error(
+      "❌ Erro: MySQL não ficou pronto dentro do limite de tentativas.",
+    );
     return false;
   }
 
-  console.log(`⏳ Tentativa ${retries + 1}/${maxRetries}: MySQL ainda não está pronto. Retentando em ${retryInterval / 1000}s...`);
+  console.log(
+    `⏳ Tentativa ${retries + 1}/${maxRetries}: MySQL ainda não está pronto. Retentando em ${retryInterval / 1000}s...`,
+  );
   setTimeout(() => checkMySQLReady(retries + 1), retryInterval);
 }
 

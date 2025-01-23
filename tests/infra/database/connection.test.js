@@ -1,10 +1,12 @@
-import sequelize from "infra/database.js";
+import database from "infra/database.js";
 
 test("Authenticate at DB should response successful", async () => {
+  let sequelize;
   try {
-    const response = await sequelize.authenticate();
-    expect(response).toBeUndefined();
+    sequelize = await database.getNewClient();
+    expect(sequelize).toBeInstanceOf(Object);
   } catch (error) {
+    console.error(error);
     expect(error).toBeNull();
   }
 
