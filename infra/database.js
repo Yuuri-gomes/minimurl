@@ -1,4 +1,4 @@
-import { ServiceError } from "infra/error";
+import { ServiceError } from "infra/errors";
 const { Sequelize, QueryTypes } = require("sequelize");
 const configDB = {
   schema: process.env.MYSQL_DATABASE,
