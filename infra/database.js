@@ -34,7 +34,10 @@ async function getNewClient() {
       host: configDB.host,
       port: configDB.port,
       dialect: "mysql",
-      dialectModule: require('mysql2')
+      dialectModule: require('mysql2'),
+      dialectOptions: {
+        multipleStatements: true
+      }
     },
   );
 
