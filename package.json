@@ -18,7 +18,7 @@
     "dev": "bun run services:up && bun run services:wait:database && bun run migrations:up && next dev",
     "lint:prettier:check": "prettier -c .",
     "lint:prettier:fix": "prettier -w .",
-    "test": "jest",
+    "test": "bun run services:up && bun run services:wait:database && jest --runInBand",
     "test:watch": "jest --watchAll --runInBand",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",

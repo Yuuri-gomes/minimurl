@@ -7,8 +7,6 @@ const retryInterval = 5000;
 const mysqlContainerName = process.env.DOCKER_CONTAINER_NAME;
 const rootPassword = process.env.MYSQL_ROOT_PASSWORD;
 
-console.log("Senha do .env: ", rootPassword);
-
 function executeCommand(command) {
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
