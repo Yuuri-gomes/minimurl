@@ -5,10 +5,21 @@ jobs:
     name: Jest Ubuntu
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node in lts/hydrogen version
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/hydrogen"
 
-      - run: npm ci
-      - run: bun run test
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies (CI mode)
+        run: bun install --no-cache
+
+      - name: Run Automated Tests
+        run: bun run test
