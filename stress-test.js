@@ -11,7 +11,8 @@ async function generateBulkShortCodes(totalCodes, length = 6) {
 }
 
 async function insertUrl(shortCode, originalUrl) {
-  const query = "INSERT INTO url_shortener (short_code, original_url) VALUES (?, ?)";
+  const query =
+    "INSERT INTO url_shortener (short_code, original_url) VALUES (?, ?)";
   try {
     await database.doQuery(query, { replacements: [shortCode, originalUrl] });
   } catch (err) {
