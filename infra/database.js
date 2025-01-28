@@ -45,8 +45,6 @@ async function getNewClient() {
     },
   );
 
-  console.log(configDB)
-
   try {
     await sequelize.authenticate();
   } catch (error) {
