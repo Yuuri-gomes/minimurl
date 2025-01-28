@@ -1,5 +1,8 @@
 import { ServiceError } from "infra/errors";
 const { Sequelize, QueryTypes } = require("sequelize");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const configDB = {
   schema: process.env.MYSQL_DATABASE,
   user: process.env.MYSQL_ROOT_USER,
