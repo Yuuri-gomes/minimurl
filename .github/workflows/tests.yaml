@@ -1,0 +1,36 @@
+name: Automated Tests
+on: pull_request
+jobs:
+  jest:
+    name: Jest Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node in lts/hydrogen version
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/hydrogen"
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Create env file
+        run: |
+          touch .env
+          echo MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} >> .env
+          echo MYSQL_HOST=${{ secrets.MYSQL_HOST }} >> .env
+          echo MYSQL_PORT=${{ secrets.MYSQL_PORT }} >> .env
+          echo MYSQl_ROOT_USER=${{ secrets.MYSQL_ROOT_USER }} >> .env
+          echo MYSQL_ROOT_PASSWORD='${{ secrets.MYSQL_ROOT_PASSWORD }}' >> .env
+          echo DOCKER_CONTAINER_NAME=docker-db >> .env
+          cat .env
+
+      - name: Install dependencies (CI mode)
+        run: bun install --no-cache
+
+      - name: Run Automated Tests
+        run: bun run test

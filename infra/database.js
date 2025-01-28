@@ -1,11 +1,14 @@
-import { ServiceError } from "infra/error";
+import { ServiceError } from "infra/errors";
 const { Sequelize, QueryTypes } = require("sequelize");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const configDB = {
   schema: process.env.MYSQL_DATABASE,
-  user: process.env.MYSQL_ROOT_USER,
+  user: 'root',
   password: process.env.MYSQL_ROOT_PASSWORD,
   host: process.env.MYSQL_HOST,
-  port: process.env.MYSQL_PORT
+  port: process.env.MYSQL_PORT,
 };
 
 async function doQuery(query, config) {
@@ -34,11 +37,22 @@ async function getNewClient() {
       host: configDB.host,
       port: configDB.port,
       dialect: "mysql",
-      dialectModule: require('mysql2')
+      dialectModule: require("mysql2"),
+      dialectOptions: {
+        multipleStatements: true,
+        connectTimeout: 10000,
+      },
     },
   );
 
-  await sequelize.authenticate();
+  console.log(configDB)
+
+  try {
+    await sequelize.authenticate();
+  } catch (error) {
+    sequelize.close();
+    throw new Error("Database is unreachable, please try again later: ", error);
+  }
   return sequelize;
 }
 

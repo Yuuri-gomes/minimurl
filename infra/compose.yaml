@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql/mysql-server
+    image: mysql/mysql-server:8.0.32
     container_name: "docker-db"
     restart: always
     env_file:
@@ -8,7 +8,4 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql-volume:/var/lib/mysql
-volumes:
-  mysql-volume:
-    driver: local
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro

@@ -7,8 +7,6 @@ const retryInterval = 5000;
 const mysqlContainerName = process.env.DOCKER_CONTAINER_NAME;
 const rootPassword = process.env.MYSQL_ROOT_PASSWORD;
 
-console.log("Senha do .env: ", rootPassword);
-
 function executeCommand(command) {
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
@@ -21,10 +19,14 @@ function executeCommand(command) {
 }
 
 async function checkMySQLReady(retries = 0) {
-  const command = `docker exec ${mysqlContainerName} mysqladmin ping -u root -p${rootPassword} --silent`;
+  const command = `docker exec ${mysqlContainerName} mysqladmin ping -u root -p"${rootPassword}" --silent`;
+
+  console.log("COMANDO DOCKER: ", command);
 
   try {
     const output = await executeCommand(command);
+    console.log("SAIDA COMANDO DOCKER: ", command);
+
     if (output.includes("mysqld is alive")) {
       console.log("✅ MySQL está pronto para uso!");
       return true;
@@ -37,7 +39,7 @@ async function checkMySQLReady(retries = 0) {
     console.error(
       "❌ Erro: MySQL não ficou pronto dentro do limite de tentativas.",
     );
-    return false;
+    throw new Error("Exceeded max limit retries of mysql connection");
   }
 
   console.log(
