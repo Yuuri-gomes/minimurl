@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql/mysql-server
+    image: mysql/mysql-server:8.0.32
     container_name: "docker-db"
     restart: always
     env_file:

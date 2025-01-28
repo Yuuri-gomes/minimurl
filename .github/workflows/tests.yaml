@@ -21,5 +21,13 @@ jobs:
       - name: Install dependencies (CI mode)
         run: bun install --no-cache
 
+      - name: Create .env file
+        run: echo "MYSQL_HOST=${{ secrets.MYSQL_HOST }}" >> .env
+          echo "MYSQL_PORT=${{ secrets.MYSQL_PORT }}" >> .env
+          echo "MYSQL_ROOT_USER=${{ secrets.MYSQL_ROOT_USER }}" >> .env
+          echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> .env
+          echo "MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}" >> .env
+          echo "DOCKER_CONTAINER_NAME=docker-db" >> .env
+
       - name: Run Automated Tests
         run: bun run test
