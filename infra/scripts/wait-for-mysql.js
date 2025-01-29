@@ -1,5 +1,5 @@
-const { exec } = require("child_process");
-const dotenv = require("dotenv");
+import { exec } from "child_process";
+import dotenv from "dotenv";
 dotenv.config();
 
 const maxRetries = 10;

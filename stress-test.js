@@ -10,20 +10,6 @@ async function generateBulkShortCodes(totalCodes, length = 6) {
   return Array.from(codes);
 }
 
-async function insertUrl(shortCode, originalUrl) {
-  const query =
-    "INSERT INTO url_shortener (short_code, original_url) VALUES (?, ?)";
-  try {
-    await database.doQuery(query, { replacements: [shortCode, originalUrl] });
-  } catch (err) {
-    if (err.code === "ER_DUP_ENTRY") {
-      return false;
-    }
-    throw err;
-  }
-  return true;
-}
-
 async function batchInsertUrls(batch) {
   const placeholders = batch.map(() => "(?, ?)").join(", ");
   const values = batch.flat();
@@ -39,7 +25,7 @@ async function batchInsertUrls(batch) {
   }
 }
 
-async function stressTest(totalUrls = 199_118_593, batchSize = 10_000) {
+async function stressTest(totalUrls = 2_000_000, batchSize = 10_000) {
   console.time("Stress Test");
 
   for (let i = 0; i < totalUrls; i += batchSize) {

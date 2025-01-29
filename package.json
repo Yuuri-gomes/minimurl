@@ -1,5 +1,6 @@
 {
   "name": "minimurl",
+  "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
     "@types/react": "19.0.7",
@@ -7,6 +8,9 @@
     "concurrently": "^9.1.2",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
+    "eslint": "9.19.0",
+    "eslint-config-next": "15.1.6",
+    "eslint-config-prettier": "^10.0.1",
     "jest": "^29.7.0",
     "kill-port": "^2.0.1",
     "postcss": "^8.5.1",
@@ -21,6 +25,7 @@
     "dev": "bun run services:up && bun run services:wait:database && bun run migrations:up && next dev",
     "lint:prettier:check": "prettier -c .",
     "lint:prettier:fix": "prettier -w .",
+    "lint:eslint:check": "next lint --dir .",
     "test": "bun run services:up && concurrently -n next,jest --hide next -k -s command-jest \"next dev\" \"bun run jest --runInBand --verbose\"",
     "test:watch": "jest --watchAll --runInBand",
     "services:up": "docker compose -f infra/compose.yaml up -d",
@@ -38,6 +43,7 @@
     "async-retry": "^1.3.3",
     "db-migrate": "^0.11.14",
     "db-migrate-mysql": "^3.0.0",
+    "eslint-plugin-jest": "^28.11.0",
     "mysql2": "^3.12.0",
     "next": "^15.1.5",
     "next-connect": "^1.0.0",

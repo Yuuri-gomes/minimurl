@@ -1,4 +1,6 @@
-require("dotenv").config();
+import { dotenv } from "dotenv";
+
+dotenv.config();
 
 module.exports = {
   username: process.env.MYSQL_ROOT_USER,
