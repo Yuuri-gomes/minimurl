@@ -1,6 +1,8 @@
 import { ServiceError } from "infra/errors";
-const { Sequelize, QueryTypes } = require("sequelize");
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
+import { Sequelize } from "sequelize";
+import mysql2 from "mysql2";
+
 dotenv.config();
 
 const configDB = {
@@ -37,7 +39,7 @@ async function getNewClient() {
       host: configDB.host,
       port: configDB.port,
       dialect: "mysql",
-      dialectModule: require("mysql2"),
+      dialectModule: mysql2,
       dialectOptions: {
         multipleStatements: true,
         connectTimeout: 10000,

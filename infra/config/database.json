@@ -5,7 +5,6 @@
     "password": { "ENV": "MYSQL_ROOT_PASSWORD" },
     "host": { "ENV": "MYSQL_HOST" },
     "port": { "ENV": "MYSQL_PORT" },
-    "database": { "ENV": "MYSQL_DATABASE" },
-    "migrations-dir": "infra/migrations"
+    "database": { "ENV": "MYSQL_DATABASE" }
   }
 }
