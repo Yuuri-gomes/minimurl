@@ -43,6 +43,7 @@
     "async-retry": "^1.3.3",
     "db-migrate": "^0.11.14",
     "db-migrate-mysql": "^3.0.0",
+    "db-migrate-plugin-es6cjs": "^0.0.2",
     "eslint-plugin-jest": "^28.11.0",
     "mysql2": "^3.12.0",
     "next": "^15.1.5",

@@ -9,6 +9,7 @@
         "async-retry": "^1.3.3",
         "db-migrate": "^0.11.14",
         "db-migrate-mysql": "^3.0.0",
+        "db-migrate-plugin-es6cjs": "^0.0.2",
         "eslint-plugin-jest": "^28.11.0",
         "mysql2": "^3.12.0",
         "next": "^15.1.5",
@@ -509,6 +510,8 @@
     "db-migrate-base": ["db-migrate-base@2.3.1", "", { "dependencies": { "bluebird": "^3.1.1" } }, "sha512-HewYQ3HPmy7NOWmhhMLg9TzN1StEtSqGL3w8IbBRCxEsJ+oM3bDUQ/z5fqpYKfIUK07mMXieCmZYwFpwWkSHDw=="],
 
     "db-migrate-mysql": ["db-migrate-mysql@3.0.0", "", { "dependencies": { "bluebird": "^3.7.2", "db-migrate-base": "^2.3.0", "moment": "^2.28.0", "mysql2": "^3.9.7" } }, "sha512-yqtbYPePmpKawZmnqXa2FLvlEYuI0UCh2wK77u7mW7CtAOzjP21iI4D2ro81VB46ZDSefV4qDlQ2lqV0CsdtZQ=="],
+
+    "db-migrate-plugin-es6cjs": ["db-migrate-plugin-es6cjs@0.0.2", "", {}, "sha512-aBSasLdbn7YV/UnPAJlyWzN9K19NXgC9NE3I274ktcRxD0D3tdW6plqxANXwEWqrvVz6CJ3FaFqEPPkNn+82Mg=="],
 
     "db-migrate-shared": ["db-migrate-shared@1.2.0", "", {}, "sha512-65k86bVeHaMxb2L0Gw3y5V+CgZSRwhVQMwDMydmw5MvIpHHwD6SmBciqIwHsZfzJ9yzV/yYhdRefRM6FV5/siw=="],
 
