@@ -18,6 +18,7 @@ async function doQuery(query, config) {
   try {
     sequelize = await getNewClient();
     const queryResult = await sequelize.query(query, config);
+
     return queryResult[0];
   } catch (error) {
     const serviceErrorObject = new ServiceError({

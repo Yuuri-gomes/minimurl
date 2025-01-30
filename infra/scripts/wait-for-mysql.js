@@ -7,7 +7,7 @@ const retryInterval = 5000;
 const mysqlContainerName = process.env.DOCKER_CONTAINER_NAME;
 const rootPassword = process.env.MYSQL_ROOT_PASSWORD;
 
-function executeCommand(command) {
+async function executeCommand(command) {
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
@@ -46,3 +46,9 @@ async function checkMySQLReady(retries = 0) {
 }
 
 checkMySQLReady();
+
+const scripts = {
+  executeCommand,
+};
+
+export default scripts;

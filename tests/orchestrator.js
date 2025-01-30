@@ -2,6 +2,7 @@ import retry from "async-retry";
 import database from "infra/database.js";
 
 async function waitForAllServices() {
+  await clearDatabase();
   await waitForWebServer();
 
   async function waitForWebServer() {
@@ -21,7 +22,9 @@ async function waitForAllServices() {
 }
 
 async function clearDatabase() {
-  await database.query("DROP SCHEMA minimurl cascade; CREATE SCHEMA minimurl;");
+  await database.doQuery(
+    "DROP SCHEMA IF EXISTS minimurl; CREATE SCHEMA minimurl;",
+  );
 }
 
 const orchestrator = {
