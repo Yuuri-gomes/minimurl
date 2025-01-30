@@ -33,7 +33,7 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "services:wait:database": "node infra/scripts/wait-for-mysql.js",
     "migration:create": "db-migrate create --config infra/config/database.json --migrations-dir infra/migrations",
-    "migrations:up": "db-migrate up --config infra/config/database.json --migrations-dir infra/migrations -e dev",
+    "migrations:up": "db-migrate up --config infra/config/database.json --migrations-dir infra/migrations",
     "migrations:down": "db-migrate down --config infra/config/database.json --migrations-dir infra/migrations -e dev",
     "migrations:status": "db-migrate check --config infra/config/database.json --migrations-dir infra/migrations"
   },
