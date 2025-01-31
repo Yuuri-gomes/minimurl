@@ -32,23 +32,23 @@
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
     "services:wait:database": "node infra/scripts/wait-for-mysql.js",
-    "migration:create": "db-migrate create --config infra/config/database.json --migrations-dir infra/migrations",
-    "migrations:up": "db-migrate up --config infra/config/database.json --migrations-dir infra/migrations -e dev",
-    "migrations:down": "db-migrate down --config infra/config/database.json --migrations-dir infra/migrations -e dev",
-    "migrations:status": "db-migrate check --config infra/config/database.json --migrations-dir infra/migrations"
+    "migration:create": "bun run sequelize-cli migration:generate --name ",
+    "migrations:up": "bun run infra/config/umzug/migrator.js up",
+    "migrations:down": "bun run infra/config/umzug/migrator.js down"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@sequelize/core": "^7.0.0-alpha.44",
     "@vercel/speed-insights": "^1.1.0",
+    "ajv": "^8",
     "async-retry": "^1.3.3",
-    "db-migrate": "^0.11.14",
-    "db-migrate-mysql": "^3.0.0",
     "eslint-plugin-jest": "^28.11.0",
     "mysql2": "^3.12.0",
     "next": "^15.1.5",
     "next-connect": "^1.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "umzug": "^3.8.2"
   }
 }

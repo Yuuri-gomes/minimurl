@@ -21,7 +21,9 @@ async function waitForAllServices() {
 }
 
 async function clearDatabase() {
-  await database.query("DROP SCHEMA minimurl cascade; CREATE SCHEMA minimurl;");
+  await database.doQuery(
+    `DROP SCHEMA IF EXISTS ${process.env.MYSQL_DATABASE}; CREATE SCHEMA ${process.env.MYSQL_DATABASE};`,
+  );
 }
 
 const orchestrator = {
