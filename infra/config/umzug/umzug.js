@@ -1,14 +1,7 @@
 import migrationsSetup from "infra/config/umzug/umzug-config.js";
-import database from "infra/database.js";
-
-const setup = async () => {
-  return await migrationsSetup();
-};
 
 export async function runMigrations() {
-  const setupMigrationInstances = await setup();
-  const umzug = setupMigrationInstances["umzug"];
-  const sequelize = setupMigrationInstances["sequelize"];
+  const { umzug, sequelize } = await migrationsSetup();
 
   const pendingMigrations = await umzug.pending();
   await umzug.up();
@@ -21,9 +14,7 @@ export async function runMigrations() {
 }
 
 export async function listMigrationsRunned() {
-  const setupMigrationInstances = await setup();
-  const umzug = setupMigrationInstances["umzug"];
-  const sequelize = setupMigrationInstances["sequelize"];
+  const { umzug, sequelize } = await migrationsSetup();
 
   const runnedMigrations = await umzug.executed();
 

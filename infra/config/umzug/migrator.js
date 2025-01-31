@@ -5,7 +5,7 @@ async function runMigrations() {
     const { umzug } = await migrationsSetup();
     umzug.runAsCLI();
   } catch (error) {
-    console.error("❌ Erro ao configurar as migrations:", error);
+    console.error("❌ Erro ao configurar as migrations: ", error);
     process.exit(1);
   }
 }
