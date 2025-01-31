@@ -1,8 +1,8 @@
-import { dotenv } from "dotenv";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-module.exports = {
+const sequelizeConfig = {
   username: process.env.MYSQL_ROOT_USER,
   password: process.env.MYSQL_ROOT_PASSWORD,
   database: process.env.MYSQL_DATABASE,
@@ -10,3 +10,5 @@ module.exports = {
   port: "3307",
   dialect: "mysql",
 };
+
+export default sequelizeConfig;
