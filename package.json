@@ -34,7 +34,8 @@
     "services:wait:database": "node infra/scripts/wait-for-mysql.js",
     "migration:create": "bun run sequelize-cli migration:generate --name ",
     "migrations:up": "bun run infra/config/umzug/migrator.js up",
-    "migrations:down": "bun run infra/config/umzug/migrator.js down"
+    "migrations:down": "bun run infra/config/umzug/migrator.js down",
+    "vercel-build": "next build && bun run migrations:up"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
