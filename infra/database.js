@@ -7,7 +7,7 @@ dotenv.config();
 
 const configDB = {
   schema: process.env.MYSQL_DATABASE,
-  user: "root",
+  user: process.env.MYSQL_ROOT_USER,
   password: process.env.MYSQL_ROOT_PASSWORD,
   host: process.env.MYSQL_HOST,
   port: process.env.MYSQL_PORT,

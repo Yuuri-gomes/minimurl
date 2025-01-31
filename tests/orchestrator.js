@@ -22,7 +22,7 @@ async function waitForAllServices() {
 
 async function clearDatabase() {
   await database.doQuery(
-    "DROP SCHEMA IF EXISTS minimurl; CREATE SCHEMA minimurl;",
+    `DROP SCHEMA IF EXISTS ${process.env.MYSQL_DATABASE}; CREATE SCHEMA ${process.env.MYSQL_DATABASE};`,
   );
 }
 
