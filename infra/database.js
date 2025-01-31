@@ -31,8 +31,6 @@ async function doQuery(query, config) {
 }
 
 async function getNewClient() {
-  console.log({ configDB });
-
   const sequelize = new Sequelize(
     configDB.schema,
     configDB.user,

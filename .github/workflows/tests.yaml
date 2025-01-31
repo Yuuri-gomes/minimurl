@@ -21,11 +21,11 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo MYSQL_DATABASE=${{ vars.MYSQL_DATABASE }} >> .env
-          echo MYSQL_HOST=${{ vars.MYSQL_HOST }} >> .env
-          echo MYSQL_PORT=${{ vars.MYSQL_PORT }} >> .env
-          echo MYSQl_ROOT_USER=${{ vars.MYSQL_ROOT_USER }} >> .env
-          echo MYSQL_ROOT_PASSWORD='${{ vars.MYSQL_ROOT_PASSWORD }}' >> .env
+          echo MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} >> .env
+          echo MYSQL_HOST=${{ secrets.MYSQL_HOST }} >> .env
+          echo MYSQL_PORT=${{ secrets.MYSQL_PORT }} >> .env
+          echo MYSQL_ROOT_USER=${{ secrets.MYSQL_ROOT_USER }} >> .env
+          echo MYSQL_ROOT_PASSWORD='${{ secrets.MYSQL_ROOT_PASSWORD }}' >> .env
           echo DOCKER_CONTAINER_NAME=docker-db >> .env
           cat .env
 
