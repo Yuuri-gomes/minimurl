@@ -1,7 +1,7 @@
 import database from "infra/database";
 import { randomBytes } from "crypto";
 
-async function generateBulkShortCodes(totalCodes, length = 6) {
+function generateBulkShortCodes(totalCodes, length = 6) {
   const codes = new Set();
   while (codes.size < totalCodes) {
     const code = randomBytes(length).toString("base64url").slice(0, length);
