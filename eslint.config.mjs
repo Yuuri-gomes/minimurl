@@ -23,6 +23,9 @@ const eslintConfigs = [
       globals: {},
     },
   },
+  {
+    ignores: ["node_modules", ".next"],
+  },
 ];
 
 export default eslintConfigs;
