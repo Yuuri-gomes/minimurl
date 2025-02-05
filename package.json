@@ -2,13 +2,16 @@
   "name": "minimurl",
   "type": "module",
   "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.19.0",
     "@types/bun": "latest",
     "@types/react": "19.0.7",
     "autoprefixer": "^10.4.20",
+    "commitizen": "4.3.0",
     "concurrently": "^9.1.2",
     "crypto": "^1.0.1",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.4.7",
     "eslint": "9.19.0",
     "eslint-config-next": "15.1.6",
@@ -39,7 +42,8 @@
     "migrations:up": "bun run infra/config/umzug/migrator.js up",
     "migrations:down": "bun run infra/config/umzug/migrator.js down",
     "vercel-build": "next build && bun run migrations:up",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "cz"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -55,5 +59,10 @@
     "react-dom": "^19.0.0",
     "sequelize": "^6.37.5",
     "umzug": "^3.8.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
