@@ -27,7 +27,7 @@
     "dev": "bun run services:up && bun run services:wait:database && bun run migrations:up && next dev",
     "lint:prettier:check": "prettier -c .",
     "lint:prettier:fix": "prettier -w .",
-    "lint:eslint:check": "next lint --dir .",
+    "lint:eslint:check": "next lint --no-cache --dir .",
     "test": "bun run services:up && concurrently -n next,jest --hide next -k -s command-jest \"next dev\" \"bun run jest --runInBand --verbose\"",
     "test:watch": "jest --watchAll --runInBand",
     "services:up": "docker compose -f infra/compose.yaml up -d",
