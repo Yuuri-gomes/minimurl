@@ -1,5 +1,5 @@
 import { randomBytes } from "crypto";
-import validateUniqueShortCode from "short-code/validate-unique-short-code.js";
+import UrlShortenerDAO from "dao/url-shortener-dao";
 
 export default async function generateShortCode() {
   const shortCodeLength = 6;
@@ -7,9 +7,7 @@ export default async function generateShortCode() {
     .toString("base64url")
     .slice(0, shortCodeLength);
 
-  if (await validateUniqueShortCode(shortCode)) {
-    console.log(shortCode);
-
+  if (UrlShortenerDAO.checkIfNotExistShortCode(shortCode)) {
     return shortCode;
   }
 

@@ -1,18 +1,17 @@
-import ShortenerPayload from "models/Shortener";
+import ShortenerPayload from "domain/Shortener";
 
 class UrlShortenerDAO {
   constructor(model) {
     this.model = model;
   }
 
-  async validateUniqueShortCode(shortCode) {
-    return await this.model.findOne({ where: { shortCode } });
+  async getOriginalUrlByShortCode(shortCode) {
+    return await this.model.findByPk(shortCode);
   }
 
   async create(payloadData) {
     try {
-      const newPayload = await this.model.create(payloadData);
-      return newPayload;
+      return await this.model.create(payloadData);
     } catch (error) {
       console.error("Erro ao criar o payload: ", error);
       throw error;
@@ -20,19 +19,32 @@ class UrlShortenerDAO {
   }
 
   async update(hash, newData) {
-    const payload = await this.validateUniqueShortCode(hash);
-    if (!payload) return null;
-
-    return await payload.update(newData);
+    return await this.model.update(newData, {
+      where: {
+        short_code: hash,
+      },
+    });
   }
 
   async delete(hash) {
-    const payload = await this.findByHash(hash);
-    if (!payload) return null;
+    return await this.model.destroy({
+      where: {
+        short_code: hash,
+      },
+    });
+  }
 
-    await payload.destroy();
-    return true;
+  async checkIfNotExistShortCode(shortCode) {
+    return (
+      (await this.model.count({
+        where: {
+          short_code: shortCode,
+        },
+      })) === 0
+    );
   }
 }
 
-export default UrlShortenerDAO(ShortenerPayload);
+const UrlShortenerDao = new UrlShortenerDAO(ShortenerPayload);
+
+export default UrlShortenerDao;

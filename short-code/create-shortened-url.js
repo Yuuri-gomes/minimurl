@@ -1,11 +1,12 @@
 import generateShortCode from "short-code/generate-short-code";
-import insertShortenedUrl from "short-code/insert-shortened-url";
+import UrlShortenerDAO from "dao/url-shortener-dao";
 
-export default async function createShortenedUrl(originalUrl) {
-  const shortCode = await generateShortCode();
+export default async function createShortenedUrl(original_url) {
+  const short_code = await generateShortCode();
   try {
-    await insertShortenedUrl(originalUrl, shortCode);
+    return await UrlShortenerDAO.create({ original_url, short_code });
   } catch (error) {
     console.error(error);
+    throw new Error();
   }
 }

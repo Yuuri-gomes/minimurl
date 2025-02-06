@@ -9,6 +9,7 @@
     "@types/bun": "latest",
     "@types/react": "19.0.7",
     "autoprefixer": "^10.4.20",
+    "babel-register": "^6.26.0",
     "commitizen": "4.3.0",
     "concurrently": "^9.1.2",
     "crypto": "^1.0.1",
