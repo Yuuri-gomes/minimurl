@@ -21,12 +21,13 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} >> .env
-          echo MYSQL_HOST=${{ secrets.MYSQL_HOST }} >> .env
-          echo MYSQL_PORT=${{ secrets.MYSQL_PORT }} >> .env
-          echo MYSQL_ROOT_USER=${{ secrets.MYSQL_ROOT_USER }} >> .env
-          echo MYSQL_ROOT_PASSWORD='${{ secrets.MYSQL_ROOT_PASSWORD }}' >> .env
+          echo MYSQL_DATABASE=minimurl >> .env
+          echo MYSQL_HOST=localhost >> .env
+          echo MYSQL_PORT=3307 >> .env
+          echo MYSQL_ROOT_USER=root >> .env
+          echo MYSQL_ROOT_PASSWORD=root >> .env
           echo DOCKER_CONTAINER_NAME=docker-db >> .env
+          echo API_URL=http://localhost:3000 >> .env
           cat .env
 
       - name: Install dependencies (CI mode)

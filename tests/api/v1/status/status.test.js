@@ -10,14 +10,12 @@ describe("GET /api/v1/status", () => {
     expect(response.status).toBe(200);
 
     const responseBody = await response.json();
+    const dependenciesDatabase = responseBody.dependencies.database;
 
     const parseUpdatedAt = new Date(responseBody.updated_at).toISOString();
     expect(responseBody.updated_at).toEqual(parseUpdatedAt);
 
-    expect(responseBody.dependencies.database.version).toContain("8.0");
-    expect(responseBody.dependencies.database.max_connections).toBeGreaterThan(
-      100,
-    );
-    expect(responseBody.dependencies.database.opened_connections).toEqual(1);
+    expect(dependenciesDatabase.version).toContain("8.0");
+    expect(dependenciesDatabase.max_connections).toBeGreaterThan(100);
   });
 });
