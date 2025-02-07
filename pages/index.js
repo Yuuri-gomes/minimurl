@@ -1,5 +1,5 @@
-import UnderConstructionComponent from "../components/UI/UnderConstruction";
+import Home from "components/UI/Home";
 
-export default function HomeComponent() {
-  return <UnderConstructionComponent />;
+export default function HomePage() {
+  return <Home />;
 }
