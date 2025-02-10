@@ -126,8 +126,10 @@ export default function Home() {
         )}
       </div>
       <footer className="mt-10 text-gray-300 text-xs">
-        © {new Date().getFullYear()} minimurl.com.br - Todos os direitos
-        reservados.
+        <p>
+          © {new Date().getFullYear()} minimurl.com.br - Todos os direitos
+          reservados.
+        </p>
       </footer>
     </div>
   );
