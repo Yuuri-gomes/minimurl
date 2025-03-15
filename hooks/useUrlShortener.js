@@ -13,7 +13,7 @@ export function useUrlShortener() {
     Swal.fire({ title, html, icon, timer, timerProgressBar: true });
   };
 
-  const handleUrlShortening = async (originalUrlForm) => {
+  async function handleUrlShortening(originalUrlForm) {
     setIsLoading(true);
     try {
       const response = await fetch("/api/v1/shortener/create", {
@@ -44,17 +44,49 @@ export function useUrlShortener() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }
+
+  async function handleUrlClickCounter(shortUrl) {
+    setIsLoading(true);
+    shortUrl = extractShortCode(shortUrl);
+    try {
+      console.log(shortUrl);
+
+      const response = await fetch(
+        `/api/v1/shortener/clicks-counter?shortUrl=${encodeURIComponent(shortUrl)}`,
+      );
+      console.log({ response });
+
+      if (!response.ok) throw new Error("Failed to get url counter clicks!");
+      const data = await response.json();
+      return data.clicks;
+    } catch (error) {
+      console.error(error);
+      showAlert(
+        "Erro",
+        "A URL informada não existe. Verifique e tente novamente.",
+        "error",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const resetForm = () => {
     setFormState({ shortUrl: "", originalUrl: "", isReadOnly: false });
   };
+
+  function extractShortCode(url) {
+    const match = url.match(/minimurl\.com\.br\/?(.*)/);
+    return match ? match[1] : null;
+  }
 
   return {
     formState,
     isLoading,
     setFormState,
     handleUrlShortening,
+    handleUrlClickCounter,
     resetForm,
     showAlert,
   };

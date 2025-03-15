@@ -43,6 +43,15 @@ class UrlShortenerDAO {
       })) === 0
     );
   }
+
+  async getUrlClicksCounter(shortCode) {
+    return await this.model.findAll({
+      attributes: ["visit_url_count"],
+      where: {
+        short_code: shortCode,
+      },
+    });
+  }
 }
 
 const UrlShortenerDao = new UrlShortenerDAO(ShortenerPayload);

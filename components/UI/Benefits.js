@@ -44,7 +44,7 @@ export default function Benefits() {
   ].map((benefit) => ({ id: crypto.randomUUID(), ...benefit }));
 
   return (
-    <section className="bg-gray-900 text-white py-12 px-6 text-center mt-10">
+    <section className="bg-gray-900 text-white py-12 px-6 text-center mt-10 rounded-lg">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-6">
           Um Encurtador de URL simples e rápido!
