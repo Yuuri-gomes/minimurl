@@ -1,7 +1,5 @@
-import Logo from "components/UI/Logo";
 import URLForm from "components/UI/URLForm";
 import URLResult from "components/UI/URLResult";
-import Footer from "components/UI/Footer";
 import Benefits from "components/UI/Benefits";
 import { useUrlShortener } from "hooks/useUrlShortener";
 
@@ -16,8 +14,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-gray-800 p-4">
-      <Logo />
+    <div className="flex flex-col items-center justify-center dark:bg-gray-800 p-4">
       <div className="w-full max-w-md flex justify-center items-center flex-col">
         <URLForm
           onFormSubmit={formAction}
@@ -28,7 +25,6 @@ export default function Home() {
         <URLResult formState={formState} onReset={resetForm} />
       </div>
       <Benefits />
-      <Footer />
     </div>
   );
 }

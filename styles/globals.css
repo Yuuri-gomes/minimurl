@@ -39,3 +39,7 @@ img {
   max-width: 100%;
   display: block;
 }
+
+#MinimurlLogo:hover {
+  text-decoration: none;
+}
