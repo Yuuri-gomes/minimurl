@@ -1,6 +1,7 @@
 import orchestrator from "tests/orchestrator";
 
 const originalUrlMock = { original_url: "https://github.com" };
+let shortUrl;
 const createUrlFetchConfigs = {
   method: "POST",
   headers: {
@@ -19,7 +20,7 @@ beforeAll(async () => {
 });
 
 describe("Integration Tests - /api/v1/shortener", () => {
-  test("Should create and shorten a URL and then resolve it correctly", async () => {
+  it("Should create and shorten a URL and then resolve it correctly", async () => {
     const createUrlResponse = await fetch(
       "http://localhost:3000/api/v1/shortener/create",
       createUrlFetchConfigs,
@@ -27,6 +28,7 @@ describe("Integration Tests - /api/v1/shortener", () => {
     expect(createUrlResponse.status).toBe(201);
     const responseBody = await createUrlResponse.json();
     const { original_url, short_code } = responseBody;
+    shortUrl = short_code;
     expect(responseBody).toHaveProperty("original_url");
     expect(responseBody).toHaveProperty("short_code");
     expect(original_url).toEqual(originalUrlMock["original_url"]);
@@ -42,5 +44,24 @@ describe("Integration Tests - /api/v1/shortener", () => {
     expect(getOriginalUrlByHashResponseBody["original_url"]).toEqual(
       originalUrlMock["original_url"],
     );
+  });
+
+  it("Should return counter clicks when the URL exists", async () => {
+    const clicksQuantityResponse = await fetch(
+      `http://localhost:3000/api/v1/shortener/clicks-counter?shortUrl=${shortUrl}`,
+    );
+
+    const clicksQuantiy = await clicksQuantityResponse.json();
+    expect(clicksQuantityResponse.status).toBe(200);
+    expect(clicksQuantiy.clicks).toEqual(1);
+  });
+
+  it("Should return 400 when URL is not found", async () => {
+    shortUrl = "notFound";
+    const clicksQuantityResponse = await fetch(
+      `http://localhost:3000/api/v1/shortener/clicks-counter?shortUrl=${shortUrl}`,
+    );
+
+    expect(clicksQuantityResponse.status).toBe(400);
   });
 });

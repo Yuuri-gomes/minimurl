@@ -19,8 +19,6 @@ async function handlerUrlCounterClicks(request, response) {
 }
 
 async function notExistShortUrl(shortUrl) {
-  console.log(shortUrl);
-
   return (
     !shortUrl || (await UrlShortenerDao.checkIfNotExistShortCode(shortUrl))
   );

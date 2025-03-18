@@ -45,13 +45,13 @@ export default function UrlClickCounter() {
             </button>
           </form>
         </div>
-        {clicks !== null && (
+        {clicks && (
           <p className="text-xl font-bold mt-4">
             Total de Cliques: <span className="text-blue-400">{clicks}</span>
           </p>
         )}
         <p className="text-gray-500 text-sm mt-4">
-          Exemplo: https://minimurl.com.br/DeFgH
+          Exemplo: https://minimurl.com.br/qAsx8
         </p>
       </div>
     </Main>

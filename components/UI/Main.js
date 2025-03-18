@@ -1,12 +1,16 @@
-import Logo from "components/UI/Logo";
 import Footer from "components/UI/Footer";
+import Navbar from "components/UI/Navbar";
+import Logo from "components/UI/Logo";
 
 export default function MainComponent({ children }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-gray-800 p-4">
-      <Logo />
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <main>
+      <Navbar />
+      <div className="flex flex-col items-center justify-center min-h-screen dark:bg-gray-800 p-20">
+        <Logo />
+        <div>{children}</div>
+        <Footer />
+      </div>
+    </main>
   );
 }
