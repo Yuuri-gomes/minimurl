@@ -19,7 +19,7 @@ export default function UrlClickCounter() {
 
   return (
     <Main>
-      <div className="flex flex-col bg-gray-900 p-6 rounded-lg text-gray-100">
+      <div className="flex flex-col bg-gray-900 p-6 rounded-lg text-gray-100 max-w-5xl mx-auto">
         <div className="flex items-center justify-center gap-2 mb-4">
           <h2 className="text-2xl font-semibold">Contador de Cliques da URL</h2>
         </div>
