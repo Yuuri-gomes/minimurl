@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
 import Main from "components/UI/Main";
 import { useUrlShortener } from "hooks/useUrlShortener";
+
 export default function UrlClickCounter() {
-  const { handleUrlClickCounter } = useUrlShortener();
+  const { handleUrlClickCounter, isLoading } = useUrlShortener();
   const formRef = useRef();
   const [url, setUrl] = useState("");
   const [clicks, setClicks] = useState(null);
@@ -41,7 +42,7 @@ export default function UrlClickCounter() {
               type="submit"
               className="w-full mt-4 p-3 text-lg bg-blue-500 text-gray-100 rounded-full shadow-md hover:bg-blue-600 transition-all disabled:opacity-50"
             >
-              Contar Cliques
+              {isLoading ? "Processando..." : "Contar Cliques"}
             </button>
           </form>
         </div>
