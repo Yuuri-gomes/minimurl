@@ -8,7 +8,7 @@ export default function MainComponent({ children }) {
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen dark:bg-gray-800 p-20">
         <Logo />
-        <div>{children}</div>
+        <div className="w-full">{children}</div>
         <Footer />
       </div>
     </main>
