@@ -3,15 +3,15 @@ export default function TermsOfUse() {
     <div className="max-w-4xl mx-auto p-6 text-gray-300 bg-gray-900 rounded-lg">
       <h1 className="text-3xl font-bold mb-4">Termos de Uso</h1>
       <p className="mb-4">
-        Bem-vindo ao Minimurl nosso contador de cliques. Ao utilizar este
+        Bem-vindo ao Minimurl nosso encurtador de URLS. Ao utilizar este
         serviço, você concorda com os seguintes termos:
       </p>
 
       <h2 className="text-xl font-semibold mt-4">1. Uso do Serviço</h2>
       <p className="mb-4">
-        Nosso contador de cliques permite rastrear acessos a URLs fornecidas
-        pelo usuário. O serviço é oferecido &quot;como está&quot;, sem garantias
-        de funcionamento contínuo ou isenção de erros. URLs sem cliques por um
+        Nosso encurtador de URLS permite rastrear acessos a URLs fornecidas pelo
+        usuário. O serviço é oferecido &quot;como está&quot;, sem garantias de
+        funcionamento contínuo ou isenção de erros. URLs sem cliques por um
         período prolongado podem ser removidas automaticamente.
       </p>
 
@@ -75,7 +75,7 @@ export default function TermsOfUse() {
       </p>
 
       <p className="mt-6 text-sm text-gray-600">
-        Última atualização: 18/03/2025
+        Última atualização: 19/03/2025
       </p>
     </div>
   );
