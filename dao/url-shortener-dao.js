@@ -8,7 +8,7 @@ class UrlShortenerDAO {
   async getOriginalUrlByShortCode(shortCode) {
     if (await this.checkIfNotExistShortCode(shortCode)) return -1;
     return await this.model.findAll({
-      attributes: ["original_url"],
+      attributes: ["short_code", "original_url"],
       where: { short_code: shortCode },
     });
   }

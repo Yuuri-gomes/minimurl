@@ -15,11 +15,12 @@ async function handlerOriginalUrlByShorCode(request, response) {
   const { hash } = request.query;
 
   if (await notExistShortCode(hash)) throw new BadRequestError();
-  const originalUrl = await UrlShortenerDao.getOriginalUrlByShortCode(hash);
+  const URLInfos = await UrlShortenerDao.getOriginalUrlByShortCode(hash);
+  const { original_url } = URLInfos[0];
   await UrlShortenerDao.update(hash, {
     visit_url_count: Sequelize.literal("visit_url_count + 1"),
     last_visit_url: Sequelize.literal("CURRENT_TIMESTAMP"),
   });
 
-  response.status(200).json(originalUrl[0]);
+  response.status(200).json({ original_url });
 }

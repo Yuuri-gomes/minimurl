@@ -80,10 +80,9 @@ export function useUrlShortener() {
 
   async function handleUrlClickCounter(shortUrl) {
     setIsLoading(true);
-    shortUrl = extractShortCode(shortUrl);
     try {
       const response = await fetch(
-        `/api/v1/shortener/clicks-counter?shortUrl=${encodeURIComponent(shortUrl)}`,
+        `/api/v1/shortener/clicks-counter?short_url=${encodeURIComponent(extractShortCode(shortUrl))}`,
       );
 
       if (!response.ok) throw new Error("Failed to get url counter clicks!");
