@@ -4,6 +4,13 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pages = [
+    { title: "Home", url: "/" },
+    { title: "Contador de cliques", url: "/url-counter" },
+    { title: "Termos de uso", url: "/terms" },
+    { title: "Denunciar URL", url: "/denounce" },
+    { title: "Desencurtar URL", url: "/unshorten-url" },
+  ].map((page) => ({ id: crypto.randomUUID(), ...page }));
 
   return (
     <header className="bg-gray-900 text-white p-4 w-full fixed top-0 shadow-md">
@@ -22,30 +29,15 @@ export default function Navbar() {
         <nav
           className={`md:flex md:items-center md:space-x-6 ${isOpen ? "block" : "hidden"} absolute md:relative bg-gray-900 md:bg-transparent w-full md:w-auto left-0 top-full md:top-auto p-4 md:p-0`}
         >
-          <Link
-            href="/"
-            className="block py-2 md:inline md:py-0 hover:text-gray-400"
-          >
-            Home
-          </Link>
-          <Link
-            href="/url-counter"
-            className="block py-2 md:inline md:py-0 hover:text-gray-400"
-          >
-            Contador de cliques
-          </Link>
-          <Link
-            href="/terms"
-            className="block py-2 md:inline md:py-0 hover:text-gray-400"
-          >
-            Termos de uso
-          </Link>
-          <Link
-            href="/denounce"
-            className="block py-2 md:inline md:py-0 hover:text-gray-400"
-          >
-            Denunciar URL
-          </Link>
+          {pages.map((page) => (
+            <Link
+              key={page.id}
+              href={page.url}
+              className="block py-2 md:inline md:py-0 hover:text-gray-400"
+            >
+              {page.title}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

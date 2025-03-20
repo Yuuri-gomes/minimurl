@@ -1,4 +1,4 @@
-class AppiError extends Error {
+class ApiError extends Error {
   constructor({ name, message, action, statusCode, cause }) {
     super(message, { cause });
     this.name = name;
@@ -16,7 +16,7 @@ class AppiError extends Error {
   }
 }
 
-export class InternalServerError extends AppiError {
+export class InternalServerError extends ApiError {
   constructor({ cause, statusCode }) {
     super({
       name: "InternalServerError",
@@ -28,7 +28,7 @@ export class InternalServerError extends AppiError {
   }
 }
 
-export class ServiceError extends AppiError {
+export class ServiceError extends ApiError {
   constructor({ cause, message }) {
     super({
       name: "ServiceError",
@@ -40,7 +40,7 @@ export class ServiceError extends AppiError {
   }
 }
 
-export class MethodNotAllowedError extends AppiError {
+export class MethodNotAllowedError extends ApiError {
   constructor() {
     super({
       name: "MethodNotAllowedError",
@@ -51,7 +51,7 @@ export class MethodNotAllowedError extends AppiError {
   }
 }
 
-export class BadRequestError extends AppiError {
+export class BadRequestError extends ApiError {
   constructor(message = "Requisição inválida.") {
     super({
       name: "BadRequestError",

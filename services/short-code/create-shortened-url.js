@@ -1,4 +1,4 @@
-import generateShortCode from "short-code/generate-short-code";
+import generateShortCode from "services/short-code/generate-short-code";
 import UrlShortenerDAO from "dao/url-shortener-dao";
 
 export default async function createShortenedUrl(original_url) {
