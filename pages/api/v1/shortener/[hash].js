@@ -3,6 +3,7 @@ import controller from "infra/controller";
 import { BadRequestError } from "infra/errors";
 import UrlShortenerDao from "dao/url-shortener-dao";
 import { Sequelize } from "sequelize";
+import notExistShortCode from "services/short-code/not-exist-short-code";
 
 const router = createRouter();
 
@@ -13,7 +14,7 @@ export default router.handler(controller.errorHandlers);
 async function handlerOriginalUrlByShorCode(request, response) {
   const { hash } = request.query;
 
-  if (await notExistHash(hash)) throw new BadRequestError();
+  if (await notExistShortCode(hash)) throw new BadRequestError();
   const originalUrl = await UrlShortenerDao.getOriginalUrlByShortCode(hash);
   await UrlShortenerDao.update(hash, {
     visit_url_count: Sequelize.literal("visit_url_count + 1"),
@@ -21,8 +22,4 @@ async function handlerOriginalUrlByShorCode(request, response) {
   });
 
   response.status(200).json(originalUrl[0]);
-}
-
-async function notExistHash(hash) {
-  return !hash || (await UrlShortenerDao.checkIfNotExistShortCode(hash));
 }
