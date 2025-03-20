@@ -28,7 +28,7 @@ export default function TermsOfUse() {
       <h2 className="text-xl font-semibold mt-4">
         3. Proibições e Conteúdo Restrito
       </h2>
-      <p className="mb-4">
+      <div className="mb-4">
         É proibido criar URLs encurtadas que redirecionem para:
         <ul className="list-disc list-inside mt-2">
           <li>Conteúdo protegido por direitos autorais sem autorização;</li>
@@ -39,7 +39,7 @@ export default function TermsOfUse() {
           </li>
           <li>Links para atividades fraudulentas ou enganosas.</li>
         </ul>
-      </p>
+      </div>
 
       <h2 className="text-xl font-semibold mt-4">
         4. Modificações e Exclusão de URLs
