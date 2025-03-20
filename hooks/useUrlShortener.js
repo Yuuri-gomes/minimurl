@@ -41,6 +41,38 @@ export function useUrlShortener() {
         "Ocorreu um erro ao encurtar a URL. Tente novamente.",
         "error",
       );
+      resetForm();
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function handleOriginalUrl(shortUrlForm) {
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        `/api/v1/shortener/unshorten-url?short_url=${encodeURIComponent(extractShortCode(shortUrlForm))}`,
+      );
+
+      if (!response.ok) throw new Error("Failed to unshorten URL");
+
+      const data = await response.json();
+
+      if (data.original_url) {
+        setFormState({
+          shortUrl: shortUrlForm,
+          originalUrl: data.original_url,
+          isReadOnly: true,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      resetForm();
+      showAlert(
+        "Erro",
+        "Ocorreu um erro ao desencurtar a URL. Tente novamente.",
+        "error",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -69,9 +101,9 @@ export function useUrlShortener() {
     }
   }
 
-  const resetForm = () => {
+  function resetForm() {
     setFormState({ shortUrl: "", originalUrl: "", isReadOnly: false });
-  };
+  }
 
   function extractShortCode(url) {
     const match = url.match(/minimurl\.com\.br\/?(.*)/);
@@ -83,6 +115,7 @@ export function useUrlShortener() {
     isLoading,
     setFormState,
     handleUrlShortening,
+    handleOriginalUrl,
     handleUrlClickCounter,
     resetForm,
     showAlert,

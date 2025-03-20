@@ -1,5 +1,5 @@
-import URLForm from "components/UI/URLForm";
-import URLResult from "components/UI/URLResult";
+import URLForm from "components/UI/Form/URLForm";
+import URLResult from "components/UI/Form/URLResult";
 import Benefits from "components/UI/Benefits";
 import { useUrlShortener } from "hooks/useUrlShortener";
 
@@ -10,6 +10,7 @@ export default function Home() {
   const formAction = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
+
     await handleUrlShortening(formData.get("original_url"));
   };
 
@@ -21,8 +22,13 @@ export default function Home() {
           isLoading={isLoading}
           setFormState={setFormState}
           formState={formState}
+          buttonMode="shorten"
         />
-        <URLResult formState={formState} onReset={resetForm} />
+        <URLResult
+          formState={formState}
+          onReset={resetForm}
+          buttonMode="shorten"
+        />
       </div>
       <Benefits />
     </div>

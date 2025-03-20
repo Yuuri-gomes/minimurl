@@ -41,6 +41,7 @@ describe("Integration Tests - /api/v1/shortener", () => {
     expect(getOriginalUrlByHashResponse.status).toBe(200);
     const getOriginalUrlByHashResponseBody =
       await getOriginalUrlByHashResponse.json();
+
     expect(getOriginalUrlByHashResponseBody["original_url"]).toEqual(
       originalUrlMock["original_url"],
     );

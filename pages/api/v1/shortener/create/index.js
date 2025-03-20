@@ -1,6 +1,6 @@
 import { createRouter } from "next-connect";
 import controller from "infra/controller";
-import createShortenedUrl from "short-code/create-shortened-url";
+import createShortenedUrl from "services/short-code/create-shortened-url";
 import { BadRequestError } from "infra/errors";
 
 const router = createRouter();
