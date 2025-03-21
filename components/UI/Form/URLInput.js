@@ -14,7 +14,7 @@ export default function URLInput({
       onChange={onChange}
       placeholder={placeholder}
       name={name}
-      className="w-full p-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      className="w-full p-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
     />
   );
 }

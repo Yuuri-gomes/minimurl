@@ -1,6 +1,6 @@
 export default function TermsOfUse() {
   return (
-    <div className="max-w-4xl mx-auto p-6 text-gray-300 bg-gray-900 rounded-lg">
+    <div className="max-w-4xl mx-auto p-6 text-gray-300 bg-gray-900 rounded-lg w-11/12">
       <h1 className="text-3xl font-bold mb-4">Termos de Uso</h1>
       <p className="mb-4">
         Bem-vindo ao Minimurl nosso encurtador de URLS. Ao utilizar este
