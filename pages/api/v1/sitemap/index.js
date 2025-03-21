@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       { url: "/url-counter", changefreq: "daily", priority: 0.9 }, // Contador de cliques
       { url: "/terms", changefreq: "yearly", priority: 0.3 }, // Termos de uso
       { url: "/denounce", changefreq: "monthly", priority: 0.5 }, // Formulário de denúncia
-      { url: "/unshorten", changefreq: "daily", priority: 0.8 }, // Página para desencurtar links
+      { url: "/unshorten-url", changefreq: "daily", priority: 0.8 }, // Página para desencurtar links
     ];
 
     // Criando o Sitemap XML
