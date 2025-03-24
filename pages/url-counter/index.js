@@ -40,7 +40,7 @@ export default function UrlClickCounter() {
             />
             <button
               type="submit"
-              className="w-full mt-4 p-3 text-lg bg-blue-500 text-gray-100 rounded-full shadow-md hover:bg-blue-600 transition-all disabled:opacity-50"
+              className="w-full mt-4 p-3 text-lg bg-blue-700 text-white rounded-full shadow-md hover:bg-blue-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-700"
             >
               {isLoading ? "Processando..." : "Contar Cliques"}
             </button>

@@ -21,15 +21,18 @@ export default function Navbar() {
           </h1>
         </Link>
         <button
-          className="lg:hidden p-2 focus:outline-none"
+          className="lg:hidden p-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? (
-            <XMarkIcon className="w-6 h-6" />
+            <XMarkIcon className="w-6 h-6" aria-hidden="true" />
           ) : (
-            <Bars3Icon className="w-6 h-6" />
+            <Bars3Icon className="w-6 h-6" aria-hidden="true" />
           )}
         </button>
+
         <nav
           className={`lg:flex lg:items-center lg:space-x-6 ${isOpen ? "block" : "hidden"} absolute lg:relative bg-gray-900 lg:bg-transparent w-full lg:w-auto left-0 top-full lg:top-auto p-4 lg:p-0`}
         >
