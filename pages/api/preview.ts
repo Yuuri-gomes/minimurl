@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { setPreviewData, redirectToPreviewURL } from "@prismicio/next/pages";
 
 import { createClient } from "../../prismicio";

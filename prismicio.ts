@@ -1,6 +1,6 @@
 import {
   createClient as baseCreateClient,
-  type Routes,
+  type Route,
 } from "@prismicio/client";
 import {
   enableAutoPreviews,
