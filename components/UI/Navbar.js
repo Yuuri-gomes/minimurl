@@ -8,8 +8,8 @@ export default function Navbar() {
     { title: "Home", url: "/" },
     { title: "Contador de cliques", url: "/url-counter" },
     { title: "Termos de uso", url: "/terms" },
-    { title: "Denunciar URL", url: "/denounce" },
     { title: "Desencurtar URL", url: "/unshorten-url" },
+    { title: "Posts", url: "/posts" },
   ].map((page) => ({ id: crypto.randomUUID(), ...page }));
 
   return (
