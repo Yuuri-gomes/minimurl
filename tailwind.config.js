@@ -1,3 +1,5 @@
+import typography from "@tailwindcss/typography";
+
 /** @type {import('tailwindcss').Config} */
 const tailwindConfig = {
   content: [
@@ -8,7 +10,7 @@ const tailwindConfig = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [typography], // ✅ correto: função importada
 };
 
 export default tailwindConfig;

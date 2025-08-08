@@ -24,7 +24,13 @@ const eslintConfigs = [
     },
   },
   {
-    ignores: ["node_modules", ".next"],
+    ignores: [
+      "node_modules",
+      ".next",
+      "prismicio-types.d.ts",
+      "prismicio.ts",
+      "slices/index.ts",
+    ],
   },
 ];
 
