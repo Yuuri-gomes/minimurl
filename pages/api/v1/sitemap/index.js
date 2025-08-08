@@ -1,5 +1,6 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import { Readable } from "stream";
+import * as prismic from "@prismicio/client";
 
 export default async function handler(req, res) {
   try {
@@ -13,6 +14,23 @@ export default async function handler(req, res) {
       { url: "/denounce", changefreq: "monthly", priority: 0.5 }, // Formulário de denúncia
       { url: "/unshorten-url", changefreq: "daily", priority: 0.8 }, // Página para desencurtar links
     ];
+
+    const client = prismic.createClient(
+      process.env.NEXT_PUBLIC_PRISMIC_REPO_NAME,
+      {
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+      },
+    );
+
+    const posts = await client.getAllByType("post");
+
+    posts.forEach((post) => {
+      links.push({
+        url: `/posts/${post.uid}`,
+        changefreq: "weekly",
+        priority: 0.7,
+      });
+    });
 
     // Criando o Sitemap XML
     const stream = new SitemapStream({ hostname: siteUrl });
