@@ -8,9 +8,9 @@ const POSTS_PER_PAGE = 6;
 export default function Posts({ posts, currentPage, totalPages }) {
   return (
     <Main>
-      <div className="max-w-5xl mx-auto px-4 py-10">
-        <h1 className="text-4xl font-bold mb-10 text-center text-gray-800">
-          Blog
+      <div className="max-w-5xl mx-auto px-4 max-md:py-3 py-5">
+        <h1 className="text-4xl font-bold mb-10 text-center text-gray-300">
+          Posts
         </h1>
 
         <div className="grid gap-6 md:grid-cols-2">

@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center dark:bg-gray-800 p-4">
+    <div className="flex flex-col items-center justify-center dark:bg-gray-800 p-4 w-full">
       <div className="w-full max-w-md flex justify-center items-center flex-col p-4">
         <URLForm
           onFormSubmit={formAction}

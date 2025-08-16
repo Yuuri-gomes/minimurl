@@ -25,6 +25,7 @@ export default function MyApp({ Component, pageProps }) {
         />
         <meta property="og:image" content="/images/social-preview.png" />
         <meta property="og:url" content="https://minimurl.com.br" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Component {...pageProps} />
       <GoogleTagManager gtmId="GTM-NRH72HBB" />
